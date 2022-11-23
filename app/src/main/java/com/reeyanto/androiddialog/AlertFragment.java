@@ -16,6 +16,7 @@ public class AlertFragment extends DialogFragment {
 
     public interface AlertListener {
         void onAlertOK();
+        void onAlertNO();
     }
 
     public AlertFragment(String title, String message, AlertListener alertListener) {
@@ -33,6 +34,11 @@ public class AlertFragment extends DialogFragment {
                 .setPositiveButton("OK", ((dialogInterface, i) -> {
                     if (alertListener != null) {
                         alertListener.onAlertOK();
+                    }
+                }))
+                .setNegativeButton("NO", ((dialogInterface, i) -> {
+                    if (alertListener != null) {
+                        alertListener.onAlertNO();
                     }
                 }));
 

@@ -38,4 +38,9 @@ public class MainActivity extends AppCompatActivity implements AlertFragment.Ale
     public void onAlertOK() {
         Toast.makeText(this, "Anda menekan OK", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onAlertNO() {
+        Toast.makeText(this, "Anda menekan NO", Toast.LENGTH_SHORT).show();
+    }
 }

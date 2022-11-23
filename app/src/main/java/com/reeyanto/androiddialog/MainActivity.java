@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showAlertDialog() {
-        AlertFragment alertFragment = new AlertFragment();
+        AlertFragment alertFragment = new AlertFragment("Informasi", "Ini adalah pesan alert dialog!");
         alertFragment.show(getSupportFragmentManager(), null);
     }
 

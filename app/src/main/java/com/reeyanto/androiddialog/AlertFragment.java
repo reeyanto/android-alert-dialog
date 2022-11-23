@@ -12,10 +12,16 @@ import androidx.fragment.app.DialogFragment;
 public class AlertFragment extends DialogFragment {
 
     private String title, message;
+    private AlertListener alertListener;
 
-    public AlertFragment(String title, String message) {
+    public interface AlertListener {
+        void onAlertOK();
+    }
+
+    public AlertFragment(String title, String message, AlertListener alertListener) {
         this.title = title;
         this.message = message;
+        this.alertListener = alertListener;
     }
 
     @NonNull
@@ -24,7 +30,11 @@ public class AlertFragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(title)
                 .setMessage(message)
-                .setPositiveButton("OK", ((dialogInterface, i) -> Toast.makeText(getActivity(), "Anda menekan OK", Toast.LENGTH_SHORT).show()));
+                .setPositiveButton("OK", ((dialogInterface, i) -> {
+                    if (alertListener != null) {
+                        alertListener.onAlertOK();
+                    }
+                }));
 
         return builder.create();
     }

@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AlertFragment.AlertListener {
 
     private Button btnAlert;
     private ImageButton btnDate, btnTime;
@@ -30,8 +30,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showAlertDialog() {
-        AlertFragment alertFragment = new AlertFragment("Informasi", "Ini adalah pesan alert dialog!");
+        AlertFragment alertFragment = new AlertFragment("Informasi", "Ini adalah pesan alert dialog!", this);
         alertFragment.show(getSupportFragmentManager(), null);
     }
 
+    @Override
+    public void onAlertOK() {
+        Toast.makeText(this, "Anda menekan OK", Toast.LENGTH_SHORT).show();
+    }
 }
